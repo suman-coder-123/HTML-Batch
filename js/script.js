@@ -259,10 +259,10 @@
 
 
 
-const product = document.getElementById("product");
-const price = document.getElementById("price");
-const addBtn = document.getElementById("addBtn");
-const container = document.getElementById("container");
+// const product = document.getElementById("product");
+// const price = document.getElementById("price");
+// const addBtn = document.getElementById("addBtn");
+// const container = document.getElementById("container");
 
 
 // addBtn.addEventListener("click" , function () {
@@ -278,10 +278,20 @@ const container = document.getElementById("container");
 //     const priceText = document.createElement("p");
 //     priceText.textContent= `$ ${price1}`;
 
+//     const editBtn = document.createElement("button");
+//     editBtn.textContent = "Edit"
+
 //     const deleteBtn = document.createElement("button");
 //     deleteBtn.textContent= "delete";
 
-//     card.append(title , priceText , deleteBtn);
+//     card.append(title , priceText , editBtn , deleteBtn);
+
+
+//         editBtn.addEventListener("click" , function() {
+//             product.value= title.textContent;
+//             price1.value = priceText.textContent.replace("$" , "");
+//             addBtn.textContent = "update product";
+//         })
 
 //     deleteBtn.addEventListener("click" , function() {
 //        card.remove();
@@ -296,29 +306,87 @@ const container = document.getElementById("container");
 // event => something happens => js Response 
 
 
-const btn = document.getElementById("btn");
+// const btn = document.getElementById("btn");
 
-btn.addEventListener("dblclick" , function() {
-    alert("you clicked");
-})
-
-const input = document.getElementById("name");
-const output = document.getElementById("output");
-
-input.addEventListener("input" , function() {
-    output.textContent= input.value;
-})
-
-
-// input.addEventListener("change" , function() {
-//     console.log(input.value);
+// btn.addEventListener("dblclick" , function() {
+//     alert("you clicked");
 // })
 
-input.addEventListener("blur" , function() {
-    console.log("input lost focus");
-})
+// const input = document.getElementById("name");
+// const output = document.getElementById("output");
+
+// input.addEventListener("input" , function() {
+//     output.textContent= input.value;
+// })
 
 
-document.addEventListener("keydown" , function() {
-    console.log("key pressed");
+// // input.addEventListener("change" , function() {
+// //     console.log(input.value);
+// // })
+
+// input.addEventListener("blur" , function() {
+//     console.log("input lost focus");
+// })
+
+
+// document.addEventListener("keydown" , function() {
+//     console.log("key pressed");
+// })
+
+
+// trim() => string , extra space remove 
+
+const todoInput = document.getElementById("todo");
+const addBtn = document.getElementById("addbtn");
+const list = document.getElementById("list");
+
+    let editTodo = null;
+
+addBtn.addEventListener("click" , function() {
+    const task = todoInput.value.trim();
+    if (task === ""){
+        alert("please enter a task");
+        return;
+    }
+
+
+
+    if (editTodo !== null) {
+        editTodo.textContent = task;
+
+        editTodo = null;
+
+        addBtn.textContent = "add todo";
+
+        todoInput.value = "";
+        return;
+    }
+
+    const todo = document.createElement("div");
+
+    const todoText = document.createElement("span");
+    todoText.textContent = task;
+
+
+    const editBtn = document.createElement("button");
+    editBtn.textContent= "Edit";
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent= "Delete";
+
+    todo.append(todoText , editBtn , deleteBtn);
+
+    list.append(todo);
+
+
+    editBtn.addEventListener("click" , function() {
+        todoInput.value = todoText.textContent;
+
+        editTodo = todoText;
+        addBtn.textContent = "update todo";
+    });
+
+    deleteBtn.addEventListener("click" , function() {
+        todo.remove();
+    })
 })
