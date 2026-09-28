@@ -336,57 +336,224 @@
 
 // trim() => string , extra space remove 
 
-const todoInput = document.getElementById("todo");
-const addBtn = document.getElementById("addbtn");
-const list = document.getElementById("list");
+// const todoInput = document.getElementById("todo");
+// const addBtn = document.getElementById("addbtn");
+// const list = document.getElementById("list");
 
-    let editTodo = null;
+//     let editTodo = null;
 
-addBtn.addEventListener("click" , function() {
-    const task = todoInput.value.trim();
-    if (task === ""){
-        alert("please enter a task");
-        return;
-    }
-
-
-
-    if (editTodo !== null) {
-        editTodo.textContent = task;
-
-        editTodo = null;
-
-        addBtn.textContent = "add todo";
-
-        todoInput.value = "";
-        return;
-    }
-
-    const todo = document.createElement("div");
-
-    const todoText = document.createElement("span");
-    todoText.textContent = task;
+// addBtn.addEventListener("click" , function() {
+//     const task = todoInput.value.trim();
+//     if (task === ""){
+//         alert("please enter a task");
+//         return;
+//     }
 
 
-    const editBtn = document.createElement("button");
-    editBtn.textContent= "Edit";
 
-    const deleteBtn = document.createElement("button");
-    deleteBtn.textContent= "Delete";
+//     if (editTodo !== null) {
+//         editTodo.textContent = task;
 
-    todo.append(todoText , editBtn , deleteBtn);
+//         editTodo = null;
 
-    list.append(todo);
+//         addBtn.textContent = "add todo";
+
+//         todoInput.value = "";
+//         return;
+//     }
+
+//     const todo = document.createElement("div");
+
+//     const todoText = document.createElement("span");
+//     todoText.textContent = task;
 
 
-    editBtn.addEventListener("click" , function() {
-        todoInput.value = todoText.textContent;
+//     const editBtn = document.createElement("button");
+//     editBtn.textContent= "Edit";
 
-        editTodo = todoText;
-        addBtn.textContent = "update todo";
-    });
+//     const deleteBtn = document.createElement("button");
+//     deleteBtn.textContent= "Delete";
 
-    deleteBtn.addEventListener("click" , function() {
-        todo.remove();
-    })
-})
+//     todo.append(todoText , editBtn , deleteBtn);
+
+//     list.append(todo);
+
+
+//     editBtn.addEventListener("click" , function() {
+//         todoInput.value = todoText.textContent;
+
+//         editTodo = todoText;
+//         addBtn.textContent = "update todo";
+//     });
+
+//     deleteBtn.addEventListener("click" , function() {
+//         todo.remove();
+//     })
+// })
+
+
+
+// const fileInput = document.getElementById("fileInput");
+// const fileInfo = document.getElementById("fileInfo");
+
+// fileInput.addEventListener("change" , function() {
+//     const file = fileInput.files[0];
+
+//     fileInfo.innerHTML= `
+//     <p> Name : ${file.name}</p>
+//     <p> Size : ${file.size}</p>
+//     <p> Type : ${file.type}</p>
+//     `;
+// })
+
+
+// const circle = document.getElementById("circle");
+
+// document.addEventListener("mousemove" , function(event){
+//     // console.log("X : " , event.clientX);
+//     // console.log("Y :" , event.clientY);
+
+//     circle.style.left = event.clientX + "px";
+//     circle.style.top = event.clientY + "px";
+// })
+
+
+// let select = document.getElementById("select");
+// select.addEventListener("change" , function() {
+//     alert("your selected country :" + select.value);
+// })
+
+// const btn = document.getElementById("btn");
+
+// btn.addEventListener("click" , function(event){
+//     console.log(event.target.textContent);
+// })
+
+
+// to make the input empty after data access => preventDefault()
+
+// const form = document.getElementById("form");
+//     let name = document.getElementById("name").value
+// let error = document.getElementById("error")
+
+// form.addEventListener("submit" , (e) => {
+//     e.preventDefault();
+
+//     if (name === ""){
+//         error.textContent= "name is required";
+//         error.style.color = "red";
+//         error.style.fontSize = "10px";
+//     } else {
+//         error.textContent = "form submitted successfully";
+//          error.style.color = "red";
+//         error.style.fontSize = "10px";
+//     }
+// });
+
+
+
+// register => info => database => unique id => token 
+
+
+// localStorage => it allows js to save data in the browser 
+
+// localStorage => tab close , browser close  , system  close 
+
+
+// to save the data in localstorage => setItem();
+
+// to retrive the saved data => getItem();
+
+
+// localStorage.setItem("name" , "suman");
+
+// let name = localStorage.getItem("name");
+
+// console.log(name);
+
+
+
+let name = document.getElementById("name");
+let saveBtn = document.getElementById("saveBtn");
+let result = document.getElementById("result");
+
+
+saveBtn.addEventListener("click" , function() {
+    localStorage.setItem("UserName" , name.value);
+
+    result.textContent = "data saved...";
+    result.style.color = "green";
+});
+
+// to remove a particular element => removeItem 
+
+
+localStorage.removeItem("name");
+
+
+// to remove the all the elements exists in the localStorage => clear()
+
+localStorage.clear();
+
+
+// localStorage => only saved the data in the form of string 
+
+// JSON => javascript obect notation 
+
+// JSON is extremely important because localStorage can store only string 
+
+
+// convert the object / array  data into string format => stringify()
+// with the help of JSON 
+
+// JSON.stringify (object name )
+
+
+// opposite of  the data => string => object / array => JSON.parse();
+
+
+const user = {
+    name : "suman",
+    age : 12,
+    city : "jaipur",
+}
+
+// const data = JSON.stringify(user);
+// console.log(data);
+
+
+// localStorage.setItem("Person" , data);
+
+
+// localStorage.setItem("Person" , JSON.stringify(user));
+
+// let Person1 = JSON.parse(localStorage.getItem("Person"));
+
+// console.log(Person1);
+
+
+
+// sessionStorage.setItem("Username" , "suman");
+
+
+
+// const myName = sessionStorage.getItem("Username");
+
+// console.log(myName)
+
+
+
+// cookies can store a small piece of data that a website can store in the browser 
+
+
+// cookies are used for this things 
+// login / session information 
+// user prefrence 
+// remembering setting
+// tracking / analytics
+
+
+document.cookie = "username=suman";
+
+
+document.cookie = "username=suman; expires = Fri,30 Oct 2026 12:00 :00 UTC"
