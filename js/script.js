@@ -473,27 +473,27 @@
 
 
 
-let name = document.getElementById("name");
-let saveBtn = document.getElementById("saveBtn");
-let result = document.getElementById("result");
+// let name = document.getElementById("name");
+// let saveBtn = document.getElementById("saveBtn");
+// let result = document.getElementById("result");
 
 
-saveBtn.addEventListener("click" , function() {
-    localStorage.setItem("UserName" , name.value);
+// saveBtn.addEventListener("click" , function() {
+//     localStorage.setItem("UserName" , name.value);
 
-    result.textContent = "data saved...";
-    result.style.color = "green";
-});
+//     result.textContent = "data saved...";
+//     result.style.color = "green";
+// });
 
 // to remove a particular element => removeItem 
 
 
-localStorage.removeItem("name");
+// localStorage.removeItem("name");
 
 
 // to remove the all the elements exists in the localStorage => clear()
 
-localStorage.clear();
+// localStorage.clear();
 
 
 // localStorage => only saved the data in the form of string 
@@ -512,11 +512,11 @@ localStorage.clear();
 // opposite of  the data => string => object / array => JSON.parse();
 
 
-const user = {
-    name : "suman",
-    age : 12,
-    city : "jaipur",
-}
+// const user = {
+//     name : "suman",
+//     age : 12,
+//     city : "jaipur",
+// }
 
 // const data = JSON.stringify(user);
 // console.log(data);
@@ -553,7 +553,215 @@ const user = {
 // tracking / analytics
 
 
-document.cookie = "username=suman";
+// document.cookie = "username=suman";
 
 
-document.cookie = "username=suman; expires = Fri,30 Oct 2026 12:00 :00 UTC"
+// document.cookie = "username=suman; expires = Fri,30 Oct 2026 12:00 :00 UTC";
+
+
+
+// Synchronised code  => those code run line by line 
+
+// asynchronised code  => after some time run , future prediction code 
+
+
+
+// asynchronous code => after some time => setTimeot , setInterval , callback , promises , then , catch , finally , async await , try , catch , API , 
+
+
+
+
+// console.log("start");
+
+// setTimeout(function() {
+//     console.log("hello after 2 sec");
+// } , 2000);
+
+// console.log("end");
+
+
+
+// const msg = document.getElementById("msg");
+
+// setTimeout(function() {
+//     msg.textContent  = "welcome to this website ....";
+// } , 3000);
+
+
+
+// setInterval => runs a functions again and again after a fixed interval 
+
+
+//  let msg =  setInterval (function() {
+//     console.log("hello");
+// } , 1000);
+
+// clearInterval(msg);
+
+
+// let counter = document.getElementById("counter");
+
+// let count = 0;
+
+// setInterval(function() {
+//     count++;
+//     counter.textContent = count;
+// } , 1000);
+
+
+//  let counter = document.getElementById("counter");
+//  let start = document.getElementById("start");
+//  let stop = document.getElementById("stop");
+
+//  let count = 0;
+//  let timer;
+
+//  start.addEventListener("click" , function() {
+//     timer = setInterval(function() {
+//         count++;
+//         counter.textContent = count;
+//     } , 1000);
+//  });
+
+//  stop.addEventListener("click" , function() {
+//     clearInterval(timer);
+//  })
+
+
+// const msg = document.getElementById("msg");
+// const btn = document.getElementById("btn");
+
+
+// function startTask(callback) {
+//     msg.textContent = "task is running ....";
+//     setTimeout(function() {
+//         callback();
+//     } , 3000);
+// }
+
+
+
+// function taskCompleted () {
+//     msg.textContent = "task completed";
+// }
+
+// btn.addEventListener("click" , function() {
+//     startTask(taskCompleted);
+// });
+
+
+
+const msg = document.getElementById("message");
+const btn = document.getElementById("start");
+
+btn.addEventListener("click" , function() {
+    login(function() {
+        getUser(function() {
+            getProduct(function() {
+                placeOrder(function() {
+                    msg.textContent = "order completed";
+                })
+            })
+        })
+    })
+})
+
+
+function login(callback) {
+    msg.textContent = "Logging in ....."
+    setTimeout (function() {
+        callback();
+    } , 1000);
+}
+
+
+function getUser(callback) {
+    msg.textContent = "Getting user ....."
+    setTimeout (function() {
+        callback();
+    } , 1000);
+}
+
+
+function getProduct(callback) {
+    msg.textContent = "getting Product....."
+    setTimeout (function() {
+        callback();
+    } , 1000);
+}
+
+
+
+function placeOrder(callback) {
+    msg.textContent = "Order Placed ....."
+    setTimeout (function() {
+        callback();
+    } , 1000);
+}
+
+
+
+// promises => it is an object that represent the result of an asynchrounous code / operation 
+
+// pending  => waiting stage 
+// resolve  => success 
+// reject  => failed , error 
+
+
+
+// syntax of promises 
+
+
+// let promise = new Promise(function (resolve , reject) {
+//     resolve("sucsess");
+// })
+
+
+
+// when the promise successfully resolve => .then()  => to print or show the result 
+
+// when the promise reject => .catch() => to print the error or failed message 
+
+
+// let promise = new Promise (function(resolve , reject) {
+//     resolve("data received");
+// });
+
+// promise.then(function(result) {
+//     console.log(result);
+// })
+
+
+// let promise = new Promise (function(resolve , reject) {
+//     reject("something went wrong");
+// });
+
+// promise
+// .then(function(result) {
+//     console.log(result);
+// })
+// .catch(function(error) {
+//     console.log(error);
+// })
+
+
+
+
+let promise = new Promise(function(resolve , reject) {
+    let login = false;
+
+    if (login) {
+        resolve("login successfully");
+    } else {
+        reject ("invalid login info");
+    }
+});
+
+promise
+.then(function(result) {
+    console.log(result);
+})
+
+.catch(function(error) {
+    console.log(error);
+})
