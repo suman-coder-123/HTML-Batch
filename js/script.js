@@ -651,53 +651,53 @@
 
 
 
-const msg = document.getElementById("message");
-const btn = document.getElementById("start");
+// const msg = document.getElementById("message");
+// const btn = document.getElementById("start");
 
-btn.addEventListener("click" , function() {
-    login(function() {
-        getUser(function() {
-            getProduct(function() {
-                placeOrder(function() {
-                    msg.textContent = "order completed";
-                })
-            })
-        })
-    })
-})
-
-
-function login(callback) {
-    msg.textContent = "Logging in ....."
-    setTimeout (function() {
-        callback();
-    } , 1000);
-}
+// btn.addEventListener("click" , function() {
+//     login(function() {
+//         getUser(function() {
+//             getProduct(function() {
+//                 placeOrder(function() {
+//                     msg.textContent = "order completed";
+//                 })
+//             })
+//         })
+//     })
+// })
 
 
-function getUser(callback) {
-    msg.textContent = "Getting user ....."
-    setTimeout (function() {
-        callback();
-    } , 1000);
-}
+// function login(callback) {
+//     msg.textContent = "Logging in ....."
+//     setTimeout (function() {
+//         callback();
+//     } , 1000);
+// }
 
 
-function getProduct(callback) {
-    msg.textContent = "getting Product....."
-    setTimeout (function() {
-        callback();
-    } , 1000);
-}
+// function getUser(callback) {
+//     msg.textContent = "Getting user ....."
+//     setTimeout (function() {
+//         callback();
+//     } , 1000);
+// }
+
+
+// function getProduct(callback) {
+//     msg.textContent = "getting Product....."
+//     setTimeout (function() {
+//         callback();
+//     } , 1000);
+// }
 
 
 
-function placeOrder(callback) {
-    msg.textContent = "Order Placed ....."
-    setTimeout (function() {
-        callback();
-    } , 1000);
-}
+// function placeOrder(callback) {
+//     msg.textContent = "Order Placed ....."
+//     setTimeout (function() {
+//         callback();
+//     } , 1000);
+// }
 
 
 
@@ -747,21 +747,166 @@ function placeOrder(callback) {
 
 
 
-let promise = new Promise(function(resolve , reject) {
-    let login = false;
+// let promise = new Promise(function(resolve , reject) {
+//     let login = false;
 
-    if (login) {
-        resolve("login successfully");
-    } else {
-        reject ("invalid login info");
-    }
-});
+//     if (login) {
+//         resolve("login successfully");
+//     } else {
+//         reject ("invalid login info");
+//     }
+// });
 
-promise
-.then(function(result) {
-    console.log(result);
-})
+// promise
+// .then(function(result) {
+//     console.log(result);
+// })
 
-.catch(function(error) {
-    console.log(error);
-})
+// .catch(function(error) {
+//     console.log(error);
+// })
+
+
+// const btn = document.getElementById("btn");
+// const result = document.getElementById("result");
+
+// function login() {
+//     return new Promise(function(resolve) {
+//         setTimeout(function() {
+//             result.textContent = "login successfully";
+//             resolve("User123");
+//         } , 2000);
+//     });
+// }
+
+
+// function getUser(userId) {
+//     return new Promise(function(resolve) {
+//         setTimeout(function() {
+//             result.textContent = "User Found";
+//             resolve({
+//                 id : userId,
+//                 name : "suman"
+//             });
+//         } , 3000);
+//     });
+// }
+
+// function getProduct(user) {
+//     return new Promise(function(resolve) {
+//         setTimeout(function() {
+//             result.textContent = "Product loaded for " + user.name;
+//             resolve(["Laptop" , "Mobile" , "Watch"]);
+//         } , 1000);
+//     });
+// }
+
+
+// btn.addEventListener("click" , function() {
+//     login()
+//     .then(function(userId) {
+//         console.log("user id "+ userId)
+//         return getUser(userId);
+//     })
+//     .then(function(user) {
+//         console.log("user :"+ user)
+//         return getProduct(user);
+//     })
+//     .then(function(product) {
+//         console.log(product);
+//         result.textContent = "process completed";
+//     })
+//     .catch (function(error) {
+//         console.log(error);
+//     })
+// })
+
+
+// async await => 
+//     async => when we use async before function , it will always return a promise 
+//     await => wait for the promise to complete and give the result 
+
+// console.log("hello")
+
+
+// function getUser() {
+//     return new Promise(function (resolve) {
+//         setTimeout(function() {
+//             resolve("data received");
+//         } ,2000);
+//     });
+// }
+
+
+// async function start() {
+//     let result = await getUser();
+//     console.log(result);
+// }
+
+// start();
+
+
+// console.log("end");
+
+
+function getUser() {
+    return new Promise(function (resolve) {
+        setTimeout(function() {
+            resolve("data received");
+        } ,2000);
+    });
+}
+
+
+
+// async function test() {
+//     console.log("1");
+//     let data = await getUser();
+//     console.log("2");
+//     console.log(data);
+//     console.log("3");
+// }
+
+
+// test();
+
+
+
+// console.log("a");
+// async function test() {
+//     console.log("b");
+//     await getUser();
+//     console.log("c");
+// }
+// console.log("d");
+// test();
+
+
+// API => Application programming interface  => it is url =. between frontend and backend 
+
+// post method => data saved => db => frontend to backend 
+
+// get method => to get the data from backend => backend to frontend 
+
+
+
+// fetch method =>  it is used to request the data from the server 
+
+
+
+// fetch("https://jsonplaceholder.typicode.com/users")
+// .then(function(response) {
+//     console.log(response);
+// })
+
+
+async function getData () {
+    let response = await fetch("https://jsonplaceholder.typicode.com/users");
+    let data = await response.json();
+    data.forEach(function(user) {
+        console.log(user.name);
+        console.log(user.email);
+    })
+}
+
+getData();
