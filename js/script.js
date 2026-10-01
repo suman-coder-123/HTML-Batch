@@ -900,13 +900,127 @@ function getUser() {
 // })
 
 
-async function getData () {
-    let response = await fetch("https://jsonplaceholder.typicode.com/users");
-    let data = await response.json();
-    data.forEach(function(user) {
-        console.log(user.name);
-        console.log(user.email);
-    })
-}
+// async function getData () {
+//     let response = await fetch("https://jsonplaceholder.typicode.com/users");
+//     let data = await response.json();
+//     data.forEach(function(user) {
+//         console.log(user.name);
+//         console.log(user.email);
+//     })
+// }
 
-getData();
+// getData();
+
+
+// fetch API => HTTP methods 
+
+// 1. GET => read the data 
+// 2. POST => Create data 
+// 3. PUT => update the complete data 
+// 4. PATCH  => update some data 
+// 5. DELETE => delete data 
+
+
+/// post method 
+
+
+// async function createUser() {
+//     const user = {
+//         name : "suman",
+//         email : "suman@gmail.com"
+//     };
+
+//     const response = await fetch("https://jsonplaceholder.typicode.com/users" , {
+//         method : "POST",
+//         headers : {
+//             "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify(user)
+//     }
+// );
+
+// const data = await response.json();
+// // console.log(data);
+// // }
+
+// // createUser();
+
+
+
+// // get method 
+
+// async function getData () {
+//     let response = await fetch("https://jsonplaceholder.typicode.com/users");
+//     let data = await response.json();
+//     data.forEach(function(user) {
+//         console.log(user.name);
+//         console.log(user.email);
+//     })
+// }
+
+// getData();
+
+
+
+
+//// put method 
+
+// async function updateUser() {
+//     const user = {
+//         name : "suman",
+//         email: "new@gmail.com"
+//     };
+
+//     const response = await fetch("https://jsonplaceholder.typicode.com/users/1" , {
+//         method:"PUT",
+//         headers:{
+//             "Content-Type" : "application/json"
+//         },
+//         body: JSON.stringify(user)
+//     }
+// );
+
+// const data = await response.json();
+// console.log(data);
+// }
+
+// updateUser();
+
+/// patch method 
+
+// async function updateName() {
+
+//     const response = await fetch("https://jsonplaceholder.typicode.com/users/1" , {
+//         method:"PATCH",
+//         headers:{
+//             "Content-Type" : "application/json"
+//         },
+//         body: JSON.stringify({name : "riya sharma"})
+//     }
+// );
+
+// const data = await response.json();
+// console.log(data);
+// }
+
+
+// updateName();
+
+
+
+// async function deleteUser() {
+//     const reponse = await fetch("https://jsonplaceholder.typicode.com/users/1" , {
+//         method: "DELETE"
+//     }
+// );
+
+// console.log("user deleted");
+// }
+
+// deleteUser();
+
+
+
+
+
+
